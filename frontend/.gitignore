@@ -25,4 +25,3 @@ DataRequest.sol
 *.njsproj
 *.sln
 *.sw?
-frontend/src/aadhaar-ocr-*.json
