@@ -126,13 +126,16 @@ Follow these steps to set up and run the project locally:
 ## Screenshots
 
 ### 1. **Home Page**
-![Home Page](https://via.placeholder.com/800x400.png?text=Home+Page)
+![Home Page](Screenshots/Screenshot%202025-02-12%20001722.png)
 
-### 2. **Upload Aadhaar Document**
-![Upload Page](https://via.placeholder.com/800x400.png?text=Upload+Document)
+### 2. **User Dashboard**
+![User Dashboard](Screenshots/Screenshot%202025-02-12%20032719.png)
 
-### 3. **Verification Result**
-![Verification Result](https://via.placeholder.com/800x400.png?text=Verification+Result)
+### 3. **Contract Registration**
+![Contract Registration](Screenshots/Screenshot%202025-02-12%20062318.png)
+
+### 4. **Token Swap**
+![Token Swap](Screenshots/Screenshot%202025-02-11%20232735.png)
 
 ---
 
@@ -153,8 +156,27 @@ Follow these steps to set up and run the project locally:
 
 ---
 
+## Contributing
+We welcome contributions! Follow these steps:
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add some feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature-name
+   ```
+5. Open a pull request.
+
+---
+
 ## Contact
 For any queries, reach out to:
-- **Email**: [your-email@example.com](mailto:amritanshu1403@gmail.com)
+- **Email**: [amritanshu1403@gmil.com](mailto:amritanshu1403@gmail.com)
 - **GitHub**: [Incognitoanshh](https://github.com/Incognitoanshh)
 
