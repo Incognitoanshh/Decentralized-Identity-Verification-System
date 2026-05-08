@@ -1,0 +1,136 @@
+/* ═══════════════════════════════════════════════════
+   D.I.V.S — ENTERPRISE SCI-FI DESIGN SYSTEM v2.0
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  /* Core Palette */
+  --void: #00000a;
+  --deep: #020210;
+  --abyss: #050520;
+  --panel: #080830;
+  --panel-2: #0c0c40;
+  --surface: rgba(8, 8, 48, 0.8);
+  --surface-2: rgba(12, 12, 64, 0.6);
+
+  /* Neon Accents */
+  --cyan: #00f5ff;
+  --cyan-dim: rgba(0, 245, 255, 0.6);
+  --cyan-glow: rgba(0, 245, 255, 0.15);
+  --cyan-border: rgba(0, 245, 255, 0.25);
+  --magenta: #ff006e;
+  --magenta-dim: rgba(255, 0, 110, 0.6);
+  --magenta-glow: rgba(255, 0, 110, 0.15);
+  --gold: #ffd700;
+  --gold-dim: rgba(255, 215, 0, 0.7);
+  --green-neon: #00ff88;
+  --green-glow: rgba(0, 255, 136, 0.15);
+  --orange-neon: #ff6b00;
+
+  /* Text */
+  --text-primary: #e0f4ff;
+  --text-secondary: rgba(180, 220, 255, 0.6);
+  --text-muted: rgba(100, 150, 200, 0.4);
+  --text-cyan: var(--cyan);
+
+  /* Borders */
+  --border: rgba(0, 245, 255, 0.12);
+  --border-bright: rgba(0, 245, 255, 0.35);
+  --border-hot: rgba(0, 245, 255, 0.6);
+
+  /* Fonts */
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Exo 2', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+
+  /* Sizing */
+  --radius: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  cursor: default;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 245, 255, 0.01) 2px,
+    rgba(0, 245, 255, 0.01) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Grid bg */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,245,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,245,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+h1,h2,h3,h4,h5 { font-family: var(--font-display); letter-spacing: 0.05em; line-height: 1.2; }
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--deep); }
+::-webkit-scrollbar-thumb { background: var(--cyan-border); }
+::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+
+/* ── Keyframes ── */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes scanMove { 0%{transform:translateY(-100%);} 100%{transform:translateY(100vh);} }
+@keyframes pulse-cyan { 0%,100%{box-shadow:0 0 8px var(--cyan),0 0 20px rgba(0,245,255,0.3);} 50%{box-shadow:0 0 16px var(--cyan),0 0 40px rgba(0,245,255,0.5),0 0 60px rgba(0,245,255,0.2);} }
+@keyframes glitch {
+  0%,100%{transform:none;opacity:1;}
+  7%{transform:skew(-0.5deg,-0.9deg);opacity:0.75;}
+  10%{transform:none;opacity:1;}
+  27%{transform:none;opacity:1;}
+  28%{transform:skew(0.8deg,0.3deg);opacity:0.75;}
+  29%{transform:none;opacity:1;}
+  35%{transform:none;opacity:1;}
+  36%{transform:skew(-1.5deg,0.4deg);opacity:0.75;}
+  37%{transform:none;opacity:1;}
+}
+@keyframes borderFlow {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+@keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+@keyframes dataStream {
+  0%{transform:translateY(-100%);}
+  100%{transform:translateY(100%);}
+}
+
+/* ── Selection ── */
+::selection { background: rgba(0,245,255,0.2); color: var(--cyan); }

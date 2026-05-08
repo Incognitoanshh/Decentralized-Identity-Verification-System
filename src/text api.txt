@@ -1,0 +1,258 @@
+API Key: 14932bf662ae380fd27d
+API Secret: 54d74ca1464c75e16400277ee5af2930fde39cdd567a5747312e00aedf1047fd
+JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI5Njc1YmZlZC0wN2E4LTRiZWQtYWNkNC1hNTljMGQ1MDlkYjkiLCJlbWFpbCI6ImFtcml0YW5zaHUxNDAzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6IkZSQTEifSx7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6Ik5ZQzEifV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiIxNDkzMmJmNjYyYWUzODBmZDI3ZCIsInNjb3BlZEtleVNlY3JldCI6IjU0ZDc0Y2ExNDY0Yzc1ZTE2NDAwMjc3ZWU1YWYyOTMwZmRlMzljZGQ1NjdhNTc0NzMxMmUwMGFlZGYxMDQ3ZmQiLCJleHAiOjE3NzAyMjg2OTV9.8ODSBQBqMe9QGWHL7aB4gIPfn8pcvteStgLJ98RDchE
+
+
+VITE_IDENTITY_CONTRACT=0x93aA137ee78eC845F4a863A2f1BAE0A8D3A0C27a
+VITE_DATA_REQUEST_CONTRACT=0xBb3ced77987bdBf1dcd63242E5366623b0E6026B
+
+
+
+#thirdweb api
+VITE_THIRDWEB_CLIENT_ID=7685362b4bb3db3decef11336314241
+THIRDWEB_SECRET_KEY=8-XHVKFen-lmv7CrY3WAhLlmtb5oHd_EGIdQM8DqSUsV20Zi8E8KpPWX5b65nKXfkcQlhA0DLmTs1ge7pxI4Ag
+
+#etherscan api
+VITE_ETHERSCAN_API_KEY=G8SSRGC13ZEZJ6PJHR2SWUR1K2PVXKC81H
+
+
+ALCHEMY_API_KEY=Ob9sheZxbw_Hqk_LTi1jlQ1qZownNLZS
+PRIVATE_KEY=a395644d963dda9f856210141b2147b382f195b8670018a2ceb11a338cca9dd8
+
+# ✅ IdentityContract deployed at: 0x8CfCF3be14F97d966082A159D1751914f1F85432
+# ⏳ Deploying EnhancedDataRequestContract...
+# ✅ EnhancedDataRequestContract deployed at: 0xC129616C9421Ca6e26625242d79339945DdD3A54
+
+
+
+PINATA_API_KEY=14932bf662ae380fd27d
+PINATA_SECRET_API_KEY=54d74ca1464c75e16400277ee5af2930fde39cdd567a5747312e00aedf1047fd
+PORT=5000
+
+
+
+# ALCHEMY_API_KEY=Ob9sheZxbw_Hqk_LTi1jlQ1qZownNLZS
+# https://eth-sepolia.g.alchemy.com/v2/Ob9sheZxbw_Hqk_LTi1jlQ1qZownNLZS
+
+
+
+
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/9f57ff0ae9ca49a5a8ff817eb109eca3
+PRIVATE_KEY=a395644d963dda9f856210141b2147b382f195b8670018a2ceb11a338cca9dd8
+ETHERSCAN_API_KEY=G8SSRGC13ZEZJ6PJHR2SWUR1K2PVXKC81H
+
+
+VITE_IDENTITY_CONTRACT=0x93aA137ee78eC845F4a863A2f1BAE0A8D3A0C27a
+VITE_DATA_REQUEST_CONTRACT=0xBb3ced77987bdBf1dcd63242E5366623b0E6026B
+
+GOOGLE_VISION_API_KEY=AIzaSyDQ1dTOYvIN53Sc3B_Cp5vf351g8eki8I8
+
+
+
+
+project detail 
+
+
+
+🤔 Project Kya Kar Rha Hai?
+Ye project user data sharing & privacy protection ke liye Ethereum blockchain ka use kar rha hai. Basic flow:
+
+🔹 Main Idea
+📝 Users apna Aadhaar data upload karte hain (encrypted format me).
+🔐 Requesters (third parties) specific user data ke liye request karte hain.
+✅ Users approve ya reject kar sakte hain.
+📜 Agar approve ho jaye, requester ko encrypted data milta hai.
+
+🔹 Project Flow (Step-by-Step)
+🔵 Step 1: User Registers (Identity Contract)
+User Ethereum Wallet connect karta hai.
+Apna Aadhaar PDF upload karta hai.
+Google Vision API OCR se details extract karta hai.
+Data encrypt karke IPFS pe upload hota hai.
+Smart Contract pe user ka IPFS hash store hota hai.
+👀 Check:
+
+identityContract.setUserIPFSHash(ipfsHash)
+🟠 Step 2: Data Requester Requests Data
+Requester doosre user ka Ethereum address dalta hai.
+Woh specific fields select karta hai (Name, DOB, Phone, etc.)
+Transaction sign karta hai (Metamask approval).
+Smart Contract me request save hoti hai.
+Request status = "Pending" hota hai.
+👀 Check:
+
+dataRequestContract.requestData(userAddress, selectedFields)
+🟢 Step 3: User Approves or Rejects Request
+User apne Dashboard me requests dekh sakta hai.
+Approve karega to:
+Requester ka public key fetch hoga.
+User ka encrypted data fetch hoga.
+Requester ke liye encrypt karke IPFS pe upload hoga.
+Requester ke liye new IPFS hash store hoga.
+Request ka status = "Approved" ho jayega.
+Reject karega to request delete ho jayegi.
+👀 Check:
+
+dataRequestContract.approveRequest(requestId)
+🔵 Step 4: Requester Fetches Approved Data
+Requester "Approved Requests" section me jaake data fetch kar sakta hai.
+Smart contract se approved IPFS hash fetch hota hai.
+IPFS se data download hota hai.
+Private Key se decrypt hota hai.
+👀 Check:
+
+identityContract.getRequesterIPFSHash(requesterAddress)
+🔥 Tech Stack Used
+Component	Technology Used
+Blockchain	Ethereum (Sepolia Testnet)
+Smart Contracts	Solidity (Hardhat)
+Frontend	React + Vite + ethers.js
+Backend	Express.js + Pinata (IPFS)
+OCR	Google Cloud Vision API
+Storage	IPFS (Pinata)
+Wallet	MetaMask
+🔴 To-Do Fixes
+1️⃣ Requests approve ho rahi hain but frontend pe show nahi ho rahi?
+2️⃣ Approve hone ke baad data fetch properly ho raha hai ya nahi?
+3️⃣ IPFS se correct encrypted data aa raha hai ya nahi?
+4️⃣ Requester ke liye proper decryption ho raha hai ya nahi?
+
+
+
+
+require("dotenv").config();
+const express = require("express");
+const multer = require("multer");
+const cors = require("cors");
+const axios = require("axios");
+const FormData = require("form-data");
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json()); // ✅ Allow JSON Parsing
+
+// ✅ Multer Setup (File Upload Handling)
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+// ✅ Pinata API Keys (Set these in `.env` file)
+const PINATA_API_KEY = process.env.PINATA_API_KEY;
+const PINATA_SECRET_API_KEY = process.env.PINATA_SECRET_API_KEY;
+
+// ✅ Aadhaar PDF Upload Route
+app.post("/upload-aadhaar", upload.single("aadhaar"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: "No file uploaded" });
+    }
+
+    console.log("📂 File received:", req.file.originalname);
+
+    // ✅ Upload to Pinata
+    const formData = new FormData();
+    formData.append("file", req.file.buffer, {
+      filename: req.file.originalname,
+    });
+
+    const pinataResponse = await axios.post(
+      "https://api.pinata.cloud/pinning/pinFileToIPFS",
+      formData,
+      {
+        headers: {
+          ...formData.getHeaders(),
+          pinata_api_key: PINATA_API_KEY,
+          pinata_secret_api_key: PINATA_SECRET_API_KEY,
+        },
+      }
+    );
+
+    const ipfsHash = pinataResponse.data.IpfsHash;
+    console.log("✅ Uploaded to Pinata:", ipfsHash);
+
+    // ✅ Simulating Aadhaar OCR Extraction (Replace this with actual OCR API if needed)
+    const extractedData = {
+      extracted_texts: [
+        {
+          texts: {
+            roi_1: "1234 5678 9012", // Aadhaar Number
+            roi_2: "Rahul Sharma", // Name
+            roi_3: "01/01/1995", // DOB
+            roi_4: "Male", // Gender
+            roi_5: "9876543210", // Phone Number
+            roi_6: "XYZ Street, ABC City, India", // Address
+          },
+        },
+      ],
+    };
+
+    res.json({
+      message: "File uploaded successfully!",
+      ipfsHash,
+      extracted_texts: extractedData.extracted_texts,
+    });
+  } catch (error) {
+    console.error("❌ Error:", error.message);
+    res.status(500).json({ error: "Failed to upload file" });
+  }
+});
+
+// ✅ W3C Validation API Route (DID Verification)
+app.get("/w3c/validate/:did", async (req, res) => {
+  try {
+    const did = req.params.did;
+    console.log(`🔍 Fetching W3C Validation for DID: ${did}`);
+
+    const apiUrl = `https://resolver.identity.foundation/1.0/identifiers/${did}`;
+    const response = await axios.get(apiUrl);
+    const data = response.data;
+
+    if (!data.didDocument) {
+      return res.status(400).json({ error: "❌ DID is NOT W3C Compliant!" });
+    }
+
+    console.log("✅ W3C Validation Result:", data);
+    res.json({ message: "✅ DID is W3C Compliant!", data });
+  } catch (err) {
+    console.error("❌ W3C Validation Failed:", err.message);
+    res.status(500).json({ error: "❌ W3C Validation Failed!" });
+  }
+});
+
+// ✅ Start Server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
+});
+
+
+
+PINATA_API_KEY=14932bf662ae380fd27d
+PINATA_SECRET_API_KEY=54d74ca1464c75e16400277ee5af2930fde39cdd567a5747312e00aedf1047fd
+PORT=5000
+
+
+
+# ALCHEMY_API_KEY=Ob9sheZxbw_Hqk_LTi1jlQ1qZownNLZS
+# https://eth-sepolia.g.alchemy.com/v2/Ob9sheZxbw_Hqk_LTi1jlQ1qZownNLZS
+
+
+
+
+SEPOLIA_RPC_URL=https://sepolia.infura.io/v3/9f57ff0ae9ca49a5a8ff817eb109eca3
+PRIVATE_KEY=a395644d963dda9f856210141b2147b382f195b8670018a2ceb11a338cca9dd8
+ETHERSCAN_API_KEY=G8SSRGC13ZEZJ6PJHR2SWUR1K2PVXKC81H
+
+
+VITE_IDENTITY_CONTRACT=0x93aA137ee78eC845F4a863A2f1BAE0A8D3A0C27a
+VITE_DATA_REQUEST_CONTRACT=0xBb3ced77987bdBf1dcd63242E5366623b0E6026B
+
+GOOGLE_VISION_API_KEY=AIzaSyDQ1dTOYvIN53Sc3B_Cp5vf351g8eki8I8
+
+
+
+
+
+API Key: 84206bba37598b420110
+API Secret: 5142464f1773091b276c73c518a3b50712fdfb5f87a73fcab6f0771b965658ed
+JWT: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzYjgxZDg1Mi1jYjExLTQzYmUtYmRjNS03ZTNhYTc4N2E4NjAiLCJlbWFpbCI6ImZ0d2V4b3JjaXN0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6IkZSQTEifSx7ImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxLCJpZCI6Ik5ZQzEifV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI4NDIwNmJiYTM3NTk4YjQyMDExMCIsInNjb3BlZEtleVNlY3JldCI6IjUxNDI0NjRmMTc3MzA5MWIyNzZjNzNjNTE4YTNiNTA3MTJmZGZiNWY4N2E3M2ZjYWI2ZjA3NzFiOTY1NjU4ZWQiLCJleHAiOjE3NzA4NDU3NDd9.o6TBXCoz0mujFW_kcIwcIaF2hPEwxzfEtGxGnbcB0I0
