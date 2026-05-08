@@ -40,7 +40,8 @@
 <div align="center">
 
 ### 🏠 Landing Page
-![Homepage](./screenshot/homepage.png)
+![Homepage](./screenshot/Screenshot 2026-05-08 at 10.05.08.png
+)
 
 ### 🔐 Identity Registration
 ![Registration](./screenshot/register.png)
