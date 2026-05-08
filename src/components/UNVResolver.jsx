@@ -4,7 +4,7 @@ import { getResolver as getEthrResolver } from "ethr-did-resolver";
 import { getResolver as getWebResolver } from "web-did-resolver";
 import { getResolver as getKeyResolver } from "key-did-resolver";
 
-const INFURA_KEY = import.meta.env.VITE_INFURA_KEY || "9f57ff0ae9ca49a5a8ff817eb109eca3";
+const INFURA_KEY = import.meta.env.VITE_INFURA_KEY;
 const NETS = [
   { name:"ETHEREUM MAINNET", key:"mainnet", chainId:1 },
   { name:"ETHEREUM SEPOLIA", key:"sepolia", chainId:11155111 },
