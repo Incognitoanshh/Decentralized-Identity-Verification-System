@@ -32,19 +32,79 @@ export default function TransactionHistory() {
   },[]);
 
   const search = async () => {
-    if(!/^0x[a-fA-F0-9]{40}$/.test(addr)){ setErr("ERR: Invalid Ethereum address format (0x + 40 hex chars)"); return; }
-    setLoading(true); setErr(""); setTxs([]);
-    const key = import.meta.env.VITE_ETHERSCAN_API_KEY||"";
-    const url = `${NETS[net].api}?module=account&action=txlist&address=${addr}&startblock=0&endblock=99999999&sort=desc&apikey=${key}`;
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      if(data.status==="1") setTxs(data.result.slice(0,50));
-      else if(data.message==="No transactions found") setTxs([]);
-      else setErr(data.message||"No results found");
-    } catch(e){ setErr("NETWORK_ERR: Cannot reach Etherscan API"); }
-    setLoading(false);
-  };
+
+  if(!/^0x[a-fA-F0-9]{40}$/.test(addr)){
+    setErr("ERR: Invalid Ethereum address format");
+    return;
+  }
+
+  setLoading(true);
+  setErr("");
+  setTxs([]);
+
+  try {
+
+    const key = import.meta.env.VITE_ETHERSCAN_API_KEY;
+
+    if(!key){
+      setErr("Missing Etherscan API key");
+      setLoading(false);
+      return;
+    }
+
+    const url =
+      `${NETS[net].api}?module=account` +
+      `&action=txlist` +
+      `&address=${addr}` +
+      `&startblock=0` +
+      `&endblock=99999999` +
+      `&page=1` +
+      `&offset=50` +
+      `&sort=desc` +
+      `&apikey=${key}`;
+
+    console.log("Fetching:", url);
+
+    const res = await fetch(url);
+
+    const text = await res.text();
+
+console.log("RAW RESPONSE:", text);
+
+const data = JSON.parse(text);
+
+    console.log("Etherscan Response:", data);
+
+    if(data.status === "1") {
+
+      setTxs(data.result || []);
+
+    } else if(
+      data.message &&
+      data.message.toLowerCase().includes("no transactions")
+    ) {
+
+      setTxs([]);
+
+    } else {
+
+      setErr(
+        data.result ||
+        data.message ||
+        "Failed to fetch transactions"
+      );
+    }
+
+  } catch(err) {
+
+    console.error(err);
+
+    setErr("NETWORK_ERR: Failed to connect API");
+
+  }
+
+  setLoading(false);
+};
 
   return (
     <div style={{ minHeight:"calc(100vh - 64px)", background:"#00000a", padding:"3rem 24px" }}>
